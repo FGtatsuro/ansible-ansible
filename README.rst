@@ -1,7 +1,8 @@
 ansible-ansible
 ===============
 
-Ansible role for Ansible. This role is used to install Ansible in target host.
+Ansible role for Ansible. This role is used to install Ansible in target
+host.
 
 Requirements
 ------------
@@ -16,10 +17,12 @@ None.
 Dependencies
 ------------
 
-- futurice.pip - Ansible is installed with pip.
+-  futurice.pip - Ansible is installed with pip.
 
 Example Playbook
 ----------------
+
+::
 
     - hosts: all
       roles:
