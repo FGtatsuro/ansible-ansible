@@ -1,4 +1,4 @@
-|Build Status|
+[![Build Status](https://travis-ci.org/FGtatsuro/ansible-ansible.svg?branch=master)](https://travis-ci.org/FGtatsuro/ansible-ansible)
 
 ansible-ansible
 ===============
@@ -19,12 +19,10 @@ None.
 Dependencies
 ------------
 
--  futurice.pip - Ansible is installed with pip.
+-   futurice.pip - Ansible is installed with pip.
 
 Example Playbook
 ----------------
-
-::
 
     - hosts: all
       roles:
@@ -34,6 +32,3 @@ License
 -------
 
 MIT
-
-.. |Build Status| image:: https://travis-ci.org/FGtatsuro/ansible-ansible.svg?branch=master
-    :target: https://travis-ci.org/FGtatsuro/ansible-ansible
