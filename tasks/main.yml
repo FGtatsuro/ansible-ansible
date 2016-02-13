@@ -1,4 +1,8 @@
 ---
 # tasks file for ansible
+- name: Install requirements for Ansible from apt
+  apt: name=python-dev update_cache=yes
+  become: yes
+
 - name: Install Ansible
   pip: name=ansible
