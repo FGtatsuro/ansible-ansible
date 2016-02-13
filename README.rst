@@ -35,5 +35,5 @@ License
 
 MIT
 
-.. image:: https://travis-ci.org/FGtatsuro/ansible-ansible.svg?branch=master
+.. |Build Status| image:: https://travis-ci.org/FGtatsuro/ansible-ansible.svg?branch=master
     :target: https://travis-ci.org/FGtatsuro/ansible-ansible
