@@ -10,6 +10,8 @@
   # At least, I found that it is failed on container python:2.
   shell: apt-get update && apt-get install -y python-apt --no-install-recommends
   become: yes
+  register: result
+  changed_when: "'0 upgraded, 0 newly installed' not in result.stdout"
 - name: Install requirements for Ansible from apt
   apt: name={{ item }} update_cache=yes
   with_items:
