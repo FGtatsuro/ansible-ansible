@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: container
   remote_user: root
   roles:
     - { role: ansible }
