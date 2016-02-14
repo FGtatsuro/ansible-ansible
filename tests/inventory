@@ -2,4 +2,4 @@
 localhost
 
 [docker_container]
-container ansible_python_interpreter=/usr/local/bin/python
+container
