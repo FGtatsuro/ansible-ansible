@@ -6,6 +6,9 @@ python: "2.7"
 # sudo: false
 sudo: required
 
+services:
+  - docker
+
 # Install ansible
 addons:
   apt:
@@ -28,10 +31,16 @@ install:
   # Change directory name to fit role name
   - mv ../ansible-ansible ../ansible
 
+before_script:
+  - docker run -it -d --name container python:2 /bin/bash
+  # Workaround: Docker connection plugin of Ansible requires that
+  # Python is installed at specified path(/usr/bin/python) in the target container
+  - docker exec container ln -s /usr/local/bin/python /usr/bin/python
+
 script:
   # Basic role syntax check
   - ansible-playbook tests/travis.yml -i tests/inventory --syntax-check
-  - ansible-playbook tests/travis.yml -i tests/inventory --connection=local -vvvv
+  - ansible-playbook tests/travis.yml -i tests/inventory --connection=docker -vvvv
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
