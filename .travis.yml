@@ -37,7 +37,7 @@ before_script:
 script:
   # Basic role syntax check
   - ansible-playbook tests/travis.yml -i tests/inventory --syntax-check
-  - ansible-playbook tests/travis.yml -i tests/inventory --connection=local -vvvv
+  - ansible-playbook tests/travis.yml -i tests/inventory --connection=docker -vvvv
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
