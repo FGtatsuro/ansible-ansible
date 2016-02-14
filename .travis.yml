@@ -32,8 +32,10 @@ install:
   - mv ../ansible-ansible ../ansible
 
 before_script:
-  - docker pull debian:jessie
-  - docker run -it -d --name container debian:jessie
+  - docker run -it -d --name container python:2 /bin/bash
+  # Workaround: Docker connection plugin of Ansible requires that
+  # Python is installed at specified path(/usr/bin/python) in the target container
+  - docker exec container ln -s /usr/local/bin/python /usr/bin/python
 
 script:
   # Basic role syntax check
