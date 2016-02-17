@@ -2,6 +2,11 @@ GEM
   remote: https://rubygems.org/
   specs:
     diff-lcs (1.2.5)
+    docker-api (1.26.0)
+      excon (>= 0.38.0)
+      json
+    excon (0.45.4)
+    json (1.8.3)
     multi_json (1.11.2)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -39,6 +44,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  docker-api
   serverspec
 
 BUNDLED WITH
