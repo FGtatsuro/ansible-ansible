@@ -34,7 +34,10 @@ before_script:
 script:
   # Basic role syntax check
   - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
+  # - ansible-playbook tests/test.yml -i tests/inventory -l localhost --connection=local -vvvv
   - ansible-playbook tests/test.yml -i tests/inventory -l container --connection=docker -vvvv
+  - bundle install
+  - bundle exec rake spec
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
