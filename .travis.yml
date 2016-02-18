@@ -37,7 +37,8 @@ script:
   # - ansible-playbook tests/test.yml -i tests/inventory -l localhost --connection=local -vvvv
   - ansible-playbook tests/test.yml -i tests/inventory -l container --connection=docker -vvvv
   - bundle install
-  - bundle exec rake spec
+  # - bundle exec rake spec SPEC_TARGET=localhost
+  - bundle exec rake spec SPEC_TARGET=container
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
