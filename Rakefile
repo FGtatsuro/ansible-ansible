@@ -5,27 +5,30 @@ task :spec    => 'spec:all'
 task :default => :spec
 
 namespace :spec do
-  targets = []
+  hosts = [
+    {
+      :name     =>  'localhost',
+      :backend  =>  'exec'
+    },
+    {
+      :name     =>  'container',
+      :backend  =>  'docker' 
+    }
+  ]
   if ENV['SPEC_TARGET'] then
-    targets << ENV['SPEC_TARGET']
-  else
-    Dir.glob('./spec/*').each do |dir|
-      next unless File.directory?(dir)
-      target = File.basename(dir)
-      target = "_#{target}" if target == "default"
-      targets << target
-    end
+    target = hosts.select{|h|  h[:name] == ENV['SPEC_TARGET']}
+    hosts = target unless target.empty?
   end
 
-  task :all     => targets
+  task :all     => hosts.map{|h|  "spec:#{h[:name]}"}
   task :default => :all
 
-  targets.each do |target|
-    original_target = target == "_default" ? target[1..-1] : target
-    desc "Run serverspec tests to #{original_target}"
-    RSpec::Core::RakeTask.new(target.to_sym) do |t|
-      ENV['TARGET_HOST'] = original_target
-      t.pattern = "spec/#{original_target}/*_spec.rb"
+  hosts.each do |host|
+    desc "Run serverspec tests to #{host[:name]}(backend=#{host[:backend]})"
+    RSpec::Core::RakeTask.new(host[:name].to_sym) do |t|
+      ENV['TARGET_HOST'] = host[:name]
+      ENV['SPEC_TARGET_BACKEND'] = host[:backend]
+      t.pattern = "spec/ansible_spec.rb"
     end
   end
 end
