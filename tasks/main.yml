@@ -1,23 +1,4 @@
 ---
 # tasks file for ansible
-# TODO: This should be moved to another role.
-- name: Install requirement for Ansible apt module
-  # Playbook using this role should remove cache like:
-  # rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/archives/*
-  #
-  # The tasks of this role may be failed if Python executable isn't on
-  # /usr/bin/python. (Even if use ansible_python_interpreter)
-  # At least, I found that it is failed on container python:2.
-  shell: apt-get update && apt-get install -y python-apt --no-install-recommends
-  become: yes
-  register: result
-  changed_when: "'0 upgraded, 0 newly installed' not in result.stdout"
-- name: Install requirements for Ansible from apt
-  apt: name={{ item }} update_cache=yes
-  with_items:
-    - build-essential
-    - python-dev
-  become: yes
-
 - name: Install Ansible
   pip: name=ansible
