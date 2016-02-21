@@ -23,7 +23,7 @@ install:
   - ansible --version
 
   # Resolve dependencies(When target role isn't installed via Ansible Galaxy, auto resolution of dependencies doesn't occur.
-  - ansible-galaxy install futurice.pip
+  - ansible-galaxy install FGtatsuro.python-requirements futurice.pip
 
 before_script:
   - docker run -it -d --name container python:2 /bin/bash
