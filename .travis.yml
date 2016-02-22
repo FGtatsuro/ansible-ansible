@@ -40,5 +40,8 @@ script:
   # - bundle exec rake spec SPEC_TARGET=localhost
   - bundle exec rake spec SPEC_TARGET=container
 
+after_script:
+  - docker rm -f container
+
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
