@@ -14,6 +14,7 @@ galaxy_info:
 
   galaxy_tags:
     - development
+    - osx
 
 dependencies: 
   - FGtatsuro.python-requirements
