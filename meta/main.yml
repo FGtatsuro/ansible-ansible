@@ -8,6 +8,9 @@ galaxy_info:
     - name: Debian
       versions:
         - jessie
+    - name: Darwin
+      versions:
+        - all
 
   galaxy_tags:
     - development
