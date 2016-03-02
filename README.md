@@ -9,17 +9,21 @@ host.
 Requirements
 ------------
 
-None.
+- Debian/Ubuntu
+- OSX
 
 Role Variables
 --------------
 
-None.
+The variables we can use in this role.
 
-Dependencies
-------------
+Role Dependencies
+-----------------
 
--   futurice.pip - Ansible is installed with pip.
+The dependencies on other roles for this role.
+
+- FGtatsuro.python-requirements
+- futurice.pip
 
 Example Playbook
 ----------------
