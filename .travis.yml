@@ -33,7 +33,7 @@ matrix:
 sudo: required
 
 install:
-  - pip install ansible
+  - sudo pip install ansible
   # Resolve dependencies(When target role isn't installed via Ansible Galaxy, auto resolution of dependencies doesn't occur.
   - ansible-galaxy install FGtatsuro.python-requirements futurice.pip
 
