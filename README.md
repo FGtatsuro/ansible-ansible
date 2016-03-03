@@ -9,7 +9,7 @@ host.
 Requirements
 ------------
 
-- Debian/Ubuntu
+- Debian
 - OSX
 
 Role Variables
