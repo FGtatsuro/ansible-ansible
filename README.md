@@ -10,6 +10,7 @@ Requirements
 ------------
 
 - Debian
+- Alpine Linux
 - OSX
 
 Role Variables

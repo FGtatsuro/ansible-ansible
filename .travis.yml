@@ -18,13 +18,33 @@ matrix:
           packages:
           - python-pip
       before_script:
-        - docker run -it -d --name container python:2 /bin/bash
+        - docker run -it -d --name container ${IMAGE} /bin/sh
         # Workaround: Docker connection plugin of Ansible requires that
         # Python is installed at specified path(/usr/bin/python) in the target container
         - docker exec container ln -s /usr/local/bin/python /usr/bin/python
       after_script:
         - docker rm -f container
       env:
+        - IMAGE=python:2
+        - TARGET=container
+        - CONNECTION=docker
+    - os: linux
+      dist: trusty
+      language: python
+      python: 2.7
+      services:
+        - docker
+      addons:
+        apt:
+          packages:
+          - python-pip
+      before_script:
+        - docker run -it -d --name container ${IMAGE} /bin/sh
+        - docker exec container ln -s /usr/local/bin/python /usr/bin/python
+      after_script:
+        - docker rm -f container
+      env:
+        - IMAGE=python:2-alpine
         - TARGET=container
         - CONNECTION=docker
 
