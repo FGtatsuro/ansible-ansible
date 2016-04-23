@@ -55,7 +55,7 @@ sudo: required
 install:
   - sudo pip install ansible
   # Resolve dependencies(When target role isn't installed via Ansible Galaxy, auto resolution of dependencies doesn't occur.
-  - ansible-galaxy install FGtatsuro.python-requirements futurice.pip
+  - ansible-galaxy install FGtatsuro.python-requirements
 
 script:
   # Basic role syntax check
