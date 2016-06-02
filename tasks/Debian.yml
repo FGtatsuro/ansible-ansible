@@ -1,2 +1,7 @@
 ---
 # tasks file for ansible(On Debian family)
+- name: Install dev package Ansible depends on
+  apt: name={{ item }} update_cache=yes cache_valid_time=3600 install_recommends=no
+  with_items:
+    - libffi-dev
+  become: yes
