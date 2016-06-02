@@ -1,2 +1,8 @@
 ---
 # tasks file for python-requirements(On Alpine Linux)
+- name: Install dev package Ansible depends on
+  apk: name={{ item }} update_cache=yes
+  with_items:
+    - libffi-dev
+    - openssl-dev
+  become: yes
