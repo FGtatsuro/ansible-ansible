@@ -1,4 +1,8 @@
 ---
+branches:
+  only:
+  - master
+
 # https://docs.travis-ci.com/user/multi-os/
 matrix:
   include:
@@ -8,6 +12,10 @@ matrix:
         - TARGET=localhost
         - CONNECTION=local
         - PYTHONPATH="/Library/Python/2.7/site-packages:$PYTHONPATH"
+      install:
+        - sudo pip install -U setuptools
+        - sudo pip install ansible
+        - ansible-galaxy install FGtatsuro.python-requirements
     - os: linux
       dist: trusty
       language: python
@@ -54,8 +62,7 @@ matrix:
 sudo: required
 
 install:
-  - sudo pip install -U setuptools
-  - sudo pip install ansible
+  - pip install ansible
   # Resolve dependencies(When target role isn't installed via Ansible Galaxy, auto resolution of dependencies doesn't occur.
   - ansible-galaxy install FGtatsuro.python-requirements
 
